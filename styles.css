@@ -221,12 +221,43 @@ html[dir="rtl"] .language-toggle {
 
 .logo-text-main {
     font-family: 'Cairo', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--primary-blue);
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-decoration: none;
     display: inline-block;
+    position: relative;
+    transition: all var(--transition-base);
+    letter-spacing: -0.02em;
 }
+
+.logo-text-main:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.3));
+}
+
+.logo-text-main::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -4px;
+    right: -4px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-base);
+}
+
+.logo-text-main:hover::before {
+    opacity: 0.1;
+}
+
+
 
 .nav {
     display: flex;
@@ -873,9 +904,10 @@ html[dir="rtl"] .form-group textarea:not(:placeholder-shown) + label {
     background: white;
     border-top: 1px solid var(--border-light);
     display: none;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .mobile-action {
@@ -883,29 +915,45 @@ html[dir="rtl"] .form-group textarea:not(:placeholder-shown) + label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--space-3);
+    padding: var(--space-4);
     text-decoration: none;
     color: var(--text-dark);
     transition: all var(--transition-base);
+    position: relative;
+    border-radius: 12px 12px 0 0;
 }
 
 .mobile-action:hover {
     background: var(--bg-light);
+    transform: translateY(-2px);
 }
 
 .mobile-action.whatsapp {
-    background: #25d366;
+    background: linear-gradient(135deg, #25d366, #128c7e);
     color: white;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.mobile-action.whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e, #075e54);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
 }
 
 .mobile-action i {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-1);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-2);
+    transition: transform var(--transition-base);
+}
+
+.mobile-action:hover i {
+    transform: scale(1.1);
 }
 
 .mobile-action span {
-    font-size: var(--font-size-xs);
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-align: center;
 }
 
 /* Responsive Design */
@@ -921,8 +969,12 @@ html[dir="rtl"] .form-group textarea:not(:placeholder-shown) + label {
     }
     
     .header .container {
-        padding: var(--space-3) var(--space-4);
-        gap: var(--space-2);
+        padding: var(--space-4) var(--space-4);
+        gap: var(--space-4);
+    }
+    
+    .logo-text-main {
+        font-size: 1.75rem;
     }
     
     .nav {
@@ -965,6 +1017,18 @@ html[dir="rtl"] .form-group textarea:not(:placeholder-shown) + label {
     
     .contact-methods {
         flex-direction: column;
+        gap: var(--space-3);
+    }
+    
+    .contact-method {
+        justify-content: center;
+        padding: var(--space-4) var(--space-6);
+        font-size: var(--font-size-base);
+    }
+    
+    .contact-form {
+        padding: var(--space-6);
+        margin-top: var(--space-4);
     }
     
     .footer-content {
@@ -982,7 +1046,16 @@ html[dir="rtl"] .form-group textarea:not(:placeholder-shown) + label {
     }
     
     body {
-        padding-bottom: 80px;
+        padding-bottom: 90px;
+    }
+    
+    section {
+        padding: var(--space-16) 0;
+    }
+    
+    .hero {
+        padding-top: 120px;
+        min-height: 90vh;
     }
     
     .step:hover {
@@ -1067,14 +1140,36 @@ html[dir="rtl"] .feature-card p {
 @media (max-width: 480px) {
     .hero-title {
         font-size: var(--font-size-2xl);
+        line-height: 1.2;
     }
     
     .section-title {
         font-size: var(--font-size-2xl);
+        margin-bottom: var(--space-12);
     }
     
     .contact-info h2 {
         font-size: var(--font-size-2xl);
+    }
+    
+    .logo-text-main {
+        font-size: 1.5rem;
+    }
+    
+    .header .container {
+        padding: var(--space-3) var(--space-3);
+    }
+    
+    .container {
+        padding: 0 var(--space-3);
+    }
+    
+    .mobile-action {
+        padding: var(--space-3);
+    }
+    
+    .mobile-action span {
+        font-size: var(--font-size-xs);
     }
 }
 
