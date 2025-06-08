@@ -368,25 +368,25 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+                    <form name="contact" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
                         <input type="hidden" name="form-name" value="contact">
                         <p style="display: none;">
                             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                         </p>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name" data-en="Your Name" data-ar="الاسم الكامل">الاسم الكامل</label>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="business" name="business" required>
+                            <input type="text" id="business" name="business" placeholder=" " required>
                             <label for="business" data-en="Business Type" data-ar="مجال العمل">مجال العمل</label>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="whatsapp" name="whatsapp" required>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder=" " required>
                             <label for="whatsapp" data-en="WhatsApp Number" data-ar="رقم واتساب">رقم واتساب</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4"></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder=" "></textarea>
                             <label for="message" data-en="Project Details (Optional)" data-ar="تفاصيل المشروع (اختياري)">تفاصيل المشروع (اختياري)</label>
                         </div>
                         <button type="submit" class="cta-btn primary">

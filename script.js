@@ -211,16 +211,12 @@ function updateLanguage() {
 function handleFormSubmission() {
     const form = document.getElementById('contactForm');
     
-    form.addEventListener('submit', function(e) {
-        // Allow form to submit naturally to Netlify
-        // Show success message
-        showNotification(
-            currentLanguage === 'en' 
-                ? 'Thank you! Your request has been submitted successfully.' 
-                : 'شكراً لك! تم إرسال طلبك بنجاح.',
-            'success'
-        );
-    });
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Let Netlify handle the form submission naturally
+            console.log('Form submitted to Netlify');
+        });
+    }
 }
 
 // Notification System

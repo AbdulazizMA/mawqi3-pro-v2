@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكراً لك! - موقع برو | Thank You! - Mawqi3 Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .success-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            padding: var(--space-8);
+        }
+        
+        .success-card {
+            background: white;
+            padding: var(--space-12);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-8);
+            animation: checkmark 0.6s ease-in-out forwards;
+        }
+        
+        .success-icon i {
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .success-title {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: var(--space-4);
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .success-message {
+            font-size: var(--font-size-lg);
+            color: var(--text-gray);
+            margin-bottom: var(--space-8);
+            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .success-card {
+                padding: var(--space-8);
+                margin: var(--space-4);
+            }
+            
+            .success-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1 class="success-title" id="successTitle">
+                شكراً لك!
+            </h1>
+            
+            <p class="success-message" id="successMessage">
+                تم إرسال طلبك بنجاح. سنتواصل معك قريباً عبر الواتساب لمناقشة مشروعك.
+            </p>
+            
+            <div class="success-actions">
+                <a href="/" class="cta-btn primary">
+                    <i class="fas fa-home"></i>
+                    <span id="homeBtn">العودة للصفحة الرئيسية</span>
+                </a>
+                
+                <a href="https://wa.me/966561056054" class="cta-btn floating-cta">
+                    <i class="fab fa-whatsapp"></i>
+                    <span id="whatsappBtn">راسلنا على الواتساب</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple language detection and switching
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'ar';
+        
+        const translations = {
+            ar: {
+                title: 'شكراً لك!',
+                message: 'تم إرسال طلبك بنجاح. سنتواصل معك قريباً عبر الواتساب لمناقشة مشروعك.',
+                home: 'العودة للصفحة الرئيسية',
+                whatsapp: 'راسلنا على الواتساب'
+            },
+            en: {
+                title: 'Thank You!',
+                message: 'Your request has been submitted successfully. We will contact you soon via WhatsApp to discuss your project.',
+                home: 'Back to Homepage',
+                whatsapp: 'Message us on WhatsApp'
+            }
+        };
+        
+        // Update content based on language
+        if (lang === 'en') {
+            document.documentElement.setAttribute('lang', 'en');
+            document.documentElement.setAttribute('dir', 'ltr');
+            
+            document.getElementById('successTitle').textContent = translations.en.title;
+            document.getElementById('successMessage').textContent = translations.en.message;
+            document.getElementById('homeBtn').textContent = translations.en.home;
+            document.getElementById('whatsappBtn').textContent = translations.en.whatsapp;
+        }
+        
+        // Auto redirect to WhatsApp after 5 seconds
+        setTimeout(() => {
+            if (confirm(lang === 'ar' ? 'هل تريد فتح الواتساب الآن؟' : 'Would you like to open WhatsApp now?')) {
+                window.open('https://wa.me/966561056054', '_blank');
+            }
+        }, 5000);
+    </script>
+</body>
+</html> 
