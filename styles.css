@@ -1561,4 +1561,95 @@ html {
         min-height: auto;
         padding-top: 0;
     }
+}
+
+/* Essential mobile button fixes */
+.cta-btn, .mobile-action, .contact-method, .portfolio-link, 
+.nav a, .language-toggle button, .mobile-menu-toggle,
+form button[type="submit"] {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+    -webkit-touch-callout: none;
+    user-select: none;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure buttons are above other elements */
+.mobile-bottom-bar {
+    z-index: 1000 !important;
+}
+
+.mobile-action {
+    z-index: 1001 !important;
+}
+
+.language-toggle {
+    z-index: 1002 !important;
+}
+
+.mobile-menu-toggle {
+    z-index: 1003 !important;
+}
+
+/* Fix any overlapping issues */
+.cta-btn {
+    z-index: 100 !important;
+}
+
+.contact-method {
+    z-index: 100 !important;
+}
+
+.portfolio-link {
+    z-index: 100 !important;
+}
+
+/* Ensure nav links work */
+.nav a {
+    z-index: 100 !important;
+}
+
+/* Mobile-specific button sizing */
+@media (max-width: 768px) {
+    .cta-btn, .mobile-action, .contact-method {
+        min-height: 48px !important;
+        min-width: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px 16px !important;
+    }
+    
+    .language-toggle button {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+    
+    .mobile-menu-toggle {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+    
+    .nav a {
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 12px 16px !important;
+    }
+    
+    .portfolio-link {
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+    }
+}
+
+/* Active states for mobile feedback */
+.cta-btn:active, .mobile-action:active, .contact-method:active,
+.portfolio-link:active, .nav a:active, .language-toggle button:active,
+.mobile-menu-toggle:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s ease !important;
 } 
