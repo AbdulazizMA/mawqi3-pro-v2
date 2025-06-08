@@ -1010,8 +1010,9 @@ html[dir="rtl"] .form-group label.active {
     text-align: center;
 }
 
-/* Responsive Design */
+/* Mobile Simplification - Hide top navigation elements */
 @media (max-width: 768px) {
+    /* Root font size adjustments for mobile */
     :root {
         --font-size-5xl: 2.25rem;
         --font-size-4xl: 1.875rem;
@@ -1025,7 +1026,27 @@ html[dir="rtl"] .form-group label.active {
         height: 100%;
     }
     
-    /* Mobile header fixes */
+    /* Hide language toggle on mobile */
+    .language-toggle {
+        display: none !important;
+    }
+    
+    /* Hide mobile menu toggle */
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+    
+    /* Hide header CTA button on mobile */
+    .header-cta {
+        display: none !important;
+    }
+    
+    /* Hide navigation menu on mobile */
+    .header .nav {
+        display: none !important;
+    }
+    
+    /* Simplify header layout for mobile */
     .header {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: none;
@@ -1033,27 +1054,39 @@ html[dir="rtl"] .form-group label.active {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
-    .container {
-        padding: 0 var(--space-4);
+    .header .container {
+        justify-content: center !important;
+        padding: var(--space-4) var(--space-4);
+        display: flex;
+        align-items: center;
     }
     
-    .header .container {
-        padding: var(--space-4) var(--space-4);
-        gap: var(--space-4);
+    /* Center the logo on mobile */
+    .logo {
+        margin: 0 auto;
+        text-align: center;
     }
     
     .logo-text-main {
         font-size: 1.75rem;
     }
     
-    .nav {
-        display: none;
+    /* Container adjustments */
+    .container {
+        padding: 0 var(--space-4);
     }
     
+    /* Hero section adjustments */
     .hero .container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: var(--space-8);
+    }
+    
+    .hero {
+        padding-top: 120px;
+        min-height: 90vh;
+        background-attachment: scroll;
     }
     
     .hero-title {
@@ -1064,16 +1097,9 @@ html[dir="rtl"] .form-group label.active {
         font-size: var(--font-size-lg);
     }
     
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-    
+    /* Grid adjustments */
+    .features-grid,
+    .portfolio-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
         gap: var(--space-6);
@@ -1110,29 +1136,11 @@ html[dir="rtl"] .form-group label.active {
         gap: var(--space-6);
     }
     
-    .mobile-bottom-bar {
-        display: grid;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    body {
-        padding-bottom: 90px;
-        position: relative;
-    }
-    
+    /* Section adjustments */
     section {
         padding: var(--space-16) 0;
         position: relative;
         z-index: 1;
-    }
-    
-    .hero {
-        padding-top: 120px;
-        min-height: 90vh;
-        background-attachment: scroll;
     }
     
     .step:hover {
@@ -1145,16 +1153,77 @@ html[dir="rtl"] .form-group label.active {
         gap: var(--space-4);
     }
     
-        .language-toggle {
-        top: var(--space-2);
-        right: var(--space-2);
-        display: none; /* Hide on mobile */
+    /* Ensure mobile bottom bar is visible and functional */
+    .mobile-bottom-bar {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        padding: var(--space-4);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
     }
+    
+    /* Make WhatsApp button full width and more prominent */
+    .mobile-action.whatsapp {
+        width: 100%;
+        padding: var(--space-4) var(--space-6);
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        color: white;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    
+    .mobile-action.whatsapp:hover {
+        background: linear-gradient(135deg, #128c7e, #075e54);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .mobile-action.whatsapp i {
+        font-size: 1.5rem;
+    }
+    
+    /* Remove the contact form button from mobile bottom bar */
+    .mobile-action:not(.whatsapp) {
+        display: none !important;
+    }
+    
+    /* Adjust body padding for smaller mobile bar */
+    body {
+        padding-bottom: 100px !important;
+        position: relative;
+    }
+}
 
-    html[dir="rtl"] .language-toggle {
-        right: auto;
-        left: var(--space-2);
-        display: none; /* Hide on mobile */
+/* Ensure desktop version remains unchanged */
+@media (min-width: 769px) {
+    .language-toggle {
+        display: block !important;
+    }
+    
+    .header-cta {
+        display: block !important;
+    }
+    
+    .header .nav {
+        display: flex !important;
+    }
+    
+    .mobile-bottom-bar {
+        display: none !important;
+    }
+    
+    .mobile-menu-toggle {
+        display: none !important;
     }
 }
 

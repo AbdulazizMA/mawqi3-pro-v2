@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDebug = new URLSearchParams(window.location.search).has('debug');
     if (isDebug) {
         debugLog.style.cssText = `
-            position: fixed; bottom: 80px; left: 0; right: 0;
+            position: fixed; bottom: 120px; left: 0; right: 0;
             background: rgba(0,0,0,0.8); color: #0f0;
             font-size: 10px; z-index: 99999; padding: 5px;
             height: 100px; overflow-y: scroll;
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             debugLog.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}<br/>` + debugLog.innerHTML;
         }
     };
-    log('Script initialized (v4)');
+    log('Script initialized (v4) - Simplified Mobile');
     // --- End Mobile Debugging ---
 
     // --- Language ---
@@ -136,28 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Mobile Menu Setup ---
-    const nav = document.querySelector('.nav');
-    const headerContainer = document.querySelector('.header .container');
-    let menuBtn = null;
-    const setupMobileMenu = () => {
-        if (window.innerWidth <= 768) {
-            if (nav && headerContainer && !document.querySelector('.mobile-menu-toggle')) {
-                menuBtn = document.createElement('button');
-                menuBtn.className = 'mobile-menu-toggle';
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                headerContainer.insertBefore(menuBtn, nav);
-                log('Mobile menu created.');
-            }
-        } else if (document.querySelector('.mobile-menu-toggle')) {
-            document.querySelector('.mobile-menu-toggle').remove();
-            if (nav) nav.style.display = '';
-            log('Mobile menu removed for desktop.');
-        }
-    };
-    setupMobileMenu();
-    window.addEventListener('resize', setupMobileMenu);
-
     // --- Universal Tap Handler (Event Delegation) ---
     const handleTap = (e) => {
         const target = e.target;
@@ -167,19 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = target.closest('a');
         const button = target.closest('button');
 
-        // 1. Mobile Menu Toggle
-        if (button && button.classList.contains('mobile-menu-toggle')) {
-            e.preventDefault();
-            log('Handler: Mobile Menu Toggle');
-            if (nav) {
-                const isVisible = nav.style.display === 'flex';
-                nav.style.display = isVisible ? 'none' : 'flex';
-                button.innerHTML = isVisible ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-            }
-            return;
-        }
-
-        // 2. Language Toggle
+        // 1. Language Toggle (Desktop only)
         if (button && button.id === 'langBtn') {
             e.preventDefault();
             log('Handler: Language Toggle');
@@ -187,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 3. Form Submit Button
+        // 2. Form Submit Button
         if (button && button.type === 'submit' && target.closest('form')) {
             log('Handler: Form Submit');
             // Allow default form submission
@@ -220,11 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 log('Handler: Anchor Link');
                 smoothScrollTo(href);
-                // Close mobile menu if open
-                if (nav && nav.style.display === 'flex' && document.querySelector('.mobile-menu-toggle')) {
-                   nav.style.display = 'none';
-                   document.querySelector('.mobile-menu-toggle').innerHTML = '<i class="fas fa-bars"></i>';
-                }
                 return;
             }
         }
@@ -255,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     log('Header scroll effect attached.');
 
-    log('Script finished initialization.');
+    log('Script finished initialization - Mobile simplified.');
 });
 
 // Handle window resize
