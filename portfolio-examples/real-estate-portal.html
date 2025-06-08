@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeEstates - Real Estate Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+            min-height: 100vh;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ea580c;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #ea580c;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .list-property-btn {
+            background: #ea580c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .list-property-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Hero Search */
+        .hero-search {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .search-tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-tab.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .search-fields {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .search-field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .search-field label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .search-field input,
+        .search-field select {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .search-field input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-btn {
+            background: white;
+            color: #ea580c;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Properties Section */
+        .properties-section {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .view-btn {
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .view-btn.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .property-card {
+            background: #f8fafc;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .property-image {
+            height: 200px;
+            background: linear-gradient(135deg, #fb923c, #f97316);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .property-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #ea580c;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .property-favorite {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .property-favorite:hover {
+            background: white;
+        }
+
+        .property-content {
+            padding: 20px;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ea580c;
+            margin-bottom: 10px;
+        }
+
+        .property-address {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .property-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .property-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .property-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .property-btn.primary {
+            background: #ea580c;
+            color: white;
+        }
+
+        .property-btn.primary:hover {
+            background: #dc2626;
+        }
+
+        .property-btn.secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .property-btn.secondary:hover {
+            background: #d1d5db;
+        }
+
+        /* Filters Sidebar */
+        .filters-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .filter-group {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-option input {
+            margin: 0;
+        }
+
+        .price-range {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .price-input {
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 100px;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .hero-header h1 {
+                font-size: 2rem;
+            }
+            
+            .search-fields {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .market-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+            }
+            
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .filters-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    PrimeEstates
+                </div>
+                <nav class="nav">
+                    <a href="#home">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="#agents">Agents</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="#list" class="list-property-btn">List Property</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-search" id="home">
+        <div class="container">
+            <div class="hero-header">
+                <h1>Find Your Dream Property</h1>
+                <p>Discover the perfect home, apartment, or commercial space in prime locations</p>
+            </div>
+            <div class="search-form">
+                <div class="search-tabs">
+                    <div class="search-tab active">Buy</div>
+                    <div class="search-tab">Rent</div>
+                    <div class="search-tab">Commercial</div>
+                </div>
+                <div class="search-fields">
+                    <div class="search-field">
+                        <label>Location</label>
+                        <input type="text" placeholder="Enter city, neighborhood, or address">
+                    </div>
+                    <div class="search-field">
+                        <label>Property Type</label>
+                        <select>
+                            <option value="">Any Type</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="condo">Condo</option>
+                            <option value="townhouse">Townhouse</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Price Range</label>
+                        <select>
+                            <option value="">Any Price</option>
+                            <option value="0-200000">$0 - $200k</option>
+                            <option value="200000-500000">$200k - $500k</option>
+                            <option value="500000-1000000">$500k - $1M</option>
+                            <option value="1000000+">$1M+</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Bedrooms</label>
+                        <select>
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+            <div class="market-stats">
+                <div class="stat-card">
+                    <div class="stat-number">15,420</div>
+                    <div class="stat-label">Properties Listed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,280</div>
+                    <div class="stat-label">Properties Sold</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$485K</div>
+                    <div class="stat-label">Average Price</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">450+</div>
+                    <div class="stat-label">Trusted Agents</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="properties-section" id="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-building"></i>
+                    Featured Properties
+                </h2>
+                <div class="view-toggle">
+                    <button class="view-btn active">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-home"></i>
+                        <span class="property-status">For Sale</span>
+                        <button class="property-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$425,000</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            123 Maple Street, Downtown
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-bed"></i>
+                                3 Beds
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-bath"></i>
+                                2 Baths
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                1,850 sqft
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Contact Agent</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-building"></i>
+                        <span class="property-status">For Rent</span>
+                        <button class="property-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$2,500/mo</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            456 Oak Avenue, Midtown
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-bed"></i>
+                                2 Beds
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-bath"></i>
+                                2 Baths
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                1,200 sqft
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Schedule Tour</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-warehouse"></i>
+                        <span class="property-status">Commercial</span>
+                        <button class="property-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$850,000</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            789 Business Blvd, Commercial District
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                5,000 sqft
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-car"></i>
+                                20 Parking
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-calendar"></i>
+                                Built 2018
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Investment Info</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-home"></i>
+                        <span class="property-status">New Listing</span>
+                        <button class="property-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$675,000</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            321 Pine Street, Suburban
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-bed"></i>
+                                4 Beds
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-bath"></i>
+                                3 Baths
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                2,400 sqft
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Save Property</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-building"></i>
+                        <span class="property-status">Luxury</span>
+                        <button class="property-favorite">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$1,250,000</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            555 Luxury Lane, Uptown
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-bed"></i>
+                                5 Beds
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-bath"></i>
+                                4 Baths
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                3,500 sqft
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Private Tour</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <i class="fas fa-home"></i>
+                        <span class="property-status">Price Reduced</span>
+                        <button class="property-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">$395,000</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            888 Elm Street, Riverside
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <i class="fas fa-bed"></i>
+                                3 Beds
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-bath"></i>
+                                1 Bath
+                            </div>
+                            <div class="property-detail">
+                                <i class="fas fa-ruler-combined"></i>
+                                1,600 sqft
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="property-btn primary">View Details</button>
+                            <button class="property-btn secondary">Make Offer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters-section">
+        <div class="container">
+            <h2 class="section-title">Advanced Search Filters</h2>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <h3>Property Type</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="house">
+                            <label for="house">Single Family Home</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="condo">
+                            <label for="condo">Condominium</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="townhouse">
+                            <label for="townhouse">Townhouse</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="apartment">
+                            <label for="apartment">Apartment</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="price-range">
+                        <input type="number" class="price-input" placeholder="Min">
+                        <span>to</span>
+                        <input type="number" class="price-input" placeholder="Max">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Features</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="pool">
+                            <label for="pool">Swimming Pool</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="garage">
+                            <label for="garage">Garage</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="garden">
+                            <label for="garden">Garden</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="fireplace">
+                            <label for="fireplace">Fireplace</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Neighborhood</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="downtown">
+                            <label for="downtown">Downtown</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="suburban">
+                            <label for="suburban">Suburban</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="waterfront">
+                            <label for="waterfront">Waterfront</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="hills">
+                            <label for="hills">Hills/Mountains</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PrimeEstates. All rights reserved. | Licensed Real Estate Portal | Built with ❤️ by WebCraft Studio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Search tabs functionality
+        document.querySelectorAll('.search-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // View toggle functionality
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Property favorites
+        document.querySelectorAll('.property-favorite').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    icon.style.color = '#ef4444';
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    icon.style.color = '';
+                }
+            });
+        });
+
+        // Property card actions
+        document.querySelectorAll('.property-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const action = this.textContent;
+                alert(`${action} clicked for this property`);
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            alert('Search functionality would be implemented here');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Vista Restaurant - Authentic Italian Cuisine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            min-height: 100vh;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0891b2;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #0891b2;
+        }
+
+        .reservation-btn {
+            background: #0891b2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .reservation-btn:hover {
+            background: #0e7490;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40">🍝</text></svg>') repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #0891b2;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            padding: 50px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #1f2937;
+        }
+
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-category {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            color: #0891b2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .menu-items {
+            space-y: 15px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #0891b2;
+            margin-left: 10px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 50px 40px;
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .feature h3 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            padding: 50px 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #0891b2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            color: #0891b2;
+            width: 20px;
+            margin-right: 15px;
+        }
+
+        .reservation-form {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0891b2;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #0891b2;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0e7490;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu-categories {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Bella Vista</div>
+                <nav class="nav">
+                    <a href="#home">Home</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <a href="#reservation" class="reservation-btn">Reserve Table</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Authentic Italian Cuisine</h1>
+            <p>Experience the finest flavors of Italy in the heart of the city</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="cta-btn">View Menu</a>
+                <a href="#reservation" class="cta-btn secondary">Book Table</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="menu-categories">
+                <div class="menu-category">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="category-title">Appetizers</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Bruschetta Classica</span>
+                            <span class="item-price">$12</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Antipasto Italiano</span>
+                            <span class="item-price">$18</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Calamari Fritti</span>
+                            <span class="item-price">$16</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Caprese Salad</span>
+                            <span class="item-price">$14</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="category-title">Main Courses</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Spaghetti Carbonara</span>
+                            <span class="item-price">$22</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Osso Buco Milanese</span>
+                            <span class="item-price">$32</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Risotto ai Funghi</span>
+                            <span class="item-price">$24</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Pollo Parmigiana</span>
+                            <span class="item-price">$26</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <div class="category-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3 class="category-title">Desserts</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Tiramisu</span>
+                            <span class="item-price">$9</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Panna Cotta</span>
+                            <span class="item-price">$8</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Gelato (3 scoops)</span>
+                            <span class="item-price">$7</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Cannoli Siciliani</span>
+                            <span class="item-price">$10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Bella Vista has been serving authentic Italian cuisine for over 20 years. Our family recipes passed down through generations bring the true taste of Italy to your table.</p>
+                    <p>We use only the finest ingredients imported directly from Italy, combined with fresh local produce to create unforgettable dining experiences.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Award Winning</h3>
+                        <p>Michelin recommended</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Fresh Ingredients</h3>
+                        <p>Daily sourced</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Family Owned</h3>
+                        <p>Since 2003</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-wine-glass"></i>
+                        </div>
+                        <h3>Fine Wines</h3>
+                        <p>Italian collection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Restaurant Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Little Italy Street, New York, NY 10013</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@bellavista.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sun: 5:00 PM - 11:00 PM</span>
+                    </div>
+                </div>
+                <div class="reservation-form" id="reservation">
+                    <h3>Make a Reservation</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select time</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">Select guests</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6+ Guests</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Book Table</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bella Vista Restaurant. All rights reserved. | Built with ❤️ by WebCraft Studio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Reservation request submitted! We will contact you shortly to confirm.');
+        });
+    </script>
+</body>
+</html>

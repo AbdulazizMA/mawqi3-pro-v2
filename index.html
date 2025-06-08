@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع برو - تطوير مواقع احترافية | Mawqi3 Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button id="langBtn" onclick="toggleLanguage()">
+            <i class="fas fa-globe"></i> 
+            <span id="langText">العربية</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text-main" data-en="Mawqi3 Pro" data-ar="موقع برو">موقع برو</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" data-en="Home" data-ar="الرئيسية">الرئيسية</a>
+                <a href="#services" data-en="Services" data-ar="خدماتنا">خدماتنا</a>
+                <a href="#portfolio" data-en="Portfolio" data-ar="أعمالنا">أعمالنا</a>
+                <a href="#testimonials" data-en="Testimonials" data-ar="آراء العملاء">آراء العملاء</a>
+                <a href="#contact" data-en="Contact" data-ar="تواصل معنا">تواصل معنا</a>
+            </nav>
+            <div class="header-cta">
+                <a href="#contact" class="cta-btn floating-cta">
+                    <i class="fas fa-phone"></i>
+                    <span data-en="Book a Free Call" data-ar="احجز مكالمة مجانية">احجز مكالمة مجانية</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                                    <h1 class="hero-title" data-en="We Build Stunning Websites for Every Kind of Business" data-ar="نصمم مواقع إلكترونية رائعة تناسب جميع أنواع الأعمال">
+                        نصمم مواقع إلكترونية رائعة تناسب جميع أنواع الأعمال
+                    </h1>
+                    <p class="hero-subtitle" data-en="Custom, mobile-friendly, and designed to convert." data-ar="مواقع مخصصة، متجاوبة مع جميع الأجهزة، وتركز على تحقيق النتائج">
+                        مواقع مخصصة، متجاوبة مع جميع الأجهزة، وتركز على تحقيق النتائج
+                    </p>
+                                    <a href="#contact" class="cta-btn primary" data-en="Let's Talk About Your Website" data-ar="تواصل معنا لبدء مشروعك الرقمي">
+                        تواصل معنا لبدء مشروعك الرقمي
+                    </a>
+            </div>
+            <div class="hero-visual">
+                <div class="mockup">
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="browser-content">
+                            <div class="code-animation">
+                                <div class="code-line"><span class="tag">&lt;div</span> <span class="attr">class=</span><span class="string">"website"</span><span class="tag">&gt;</span></div>
+                                <div class="code-line"><span class="tag">&lt;h1&gt;</span>Your Business<span class="tag">&lt;/h1&gt;</span></div>
+                                <div class="code-line"><span class="tag">&lt;p&gt;</span>Professional & Modern<span class="tag">&lt;/p&gt;</span></div>
+                                <div class="code-line"><span class="tag">&lt;/div&gt;</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="services" class="why-choose">
+        <div class="container">
+            <h2 class="section-title" data-en="Why Choose Us" data-ar="لماذا نحن خيارك الأفضل؟">لماذا نحن خيارك الأفضل؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 data-en="Fast Performance" data-ar="سرعة فائقة">سرعة فائقة</h3>
+                    <p data-en="Lightning-fast loading speeds that keep your visitors engaged and improve SEO rankings." data-ar="تحميل سريع يحافظ على تفاعل الزوار ويعزز ظهورك في محركات البحث">
+                        تحميل سريع يحافظ على تفاعل الزوار ويعزز ظهورك في محركات البحث
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 data-en="Mobile Optimized" data-ar="متوافق مع جميع الأجهزة">متوافق مع جميع الأجهزة</h3>
+                    <p data-en="Perfect display on all devices - from smartphones to desktops, ensuring maximum reach." data-ar="تجربة مثالية على الجوال والكمبيوتر لضمان وصول أكبر لعملائك">
+                        تجربة مثالية على الجوال والكمبيوتر لضمان وصول أكبر لعملائك
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 data-en="Custom Designs" data-ar="تصاميم مبتكرة حسب الطلب">تصاميم مبتكرة حسب الطلب</h3>
+                    <p data-en="Unique, tailored designs that reflect your brand identity and stand out from competitors." data-ar="تصاميم تعكس هوية علامتك التجارية وتجعلك مميزًا عن المنافسين">
+                        تصاميم تعكس هوية علامتك التجارية وتجعلك مميزًا عن المنافسين
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 data-en="Secure & Reliable" data-ar="حماية وموثوقية">حماية وموثوقية</h3>
+                    <p data-en="Advanced security measures and reliable hosting to protect your business and customers." data-ar="أمان متقدم واستضافة موثوقة لحماية بياناتك وراحة عملائك">
+                        أمان متقدم واستضافة موثوقة لحماية بياناتك وراحة عملائك
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Work" data-ar="نماذج من أعمالنا">نماذج من أعمالنا</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/ecommerce-website.jpg" alt="E-Commerce Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="E-Commerce Platform" data-ar="منصة تجارة إلكترونية احترافية">E-Commerce Platform</h3>
+                            <p data-en="Retail Industry" data-ar="قطاع التجزئة">Retail Industry</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/ecommerce-store.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/restaurant-website.jpg" alt="Restaurant Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="Restaurant Website" data-ar="موقع إلكتروني لمطعم">Restaurant Website</h3>
+                            <p data-en="Food & Beverage" data-ar="قطاع الأغذية والمشروبات">Food & Beverage</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/restaurant-website.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/corporate-website.jpg" alt="Corporate Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="Corporate Portal" data-ar="بوابة إلكترونية للشركات">Corporate Portal</h3>
+                            <p data-en="Professional Services" data-ar="الخدمات الاحترافية">Professional Services</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/corporate-portal.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/healthcare-website.jpg" alt="Healthcare Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="Healthcare System" data-ar="نظام إدارة صحية">Healthcare System</h3>
+                            <p data-en="Medical Industry" data-ar="المجال الطبي">Medical Industry</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/healthcare-system.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/educational-website.jpg" alt="Educational Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="Educational Platform" data-ar="منصة تعليمية">Educational Platform</h3>
+                            <p data-en="Education Sector" data-ar="القطاع التعليمي">Education Sector</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/educational-platform.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/realestate-website.jpg" alt="Real Estate Website" class="portfolio-photo">
+                        <div class="portfolio-overlay">
+                            <h3 data-en="Real Estate Portal" data-ar="بوابة إلكترونية للعقارات">Real Estate Portal</h3>
+                            <p data-en="Real Estate" data-ar="قطاع العقارات">Real Estate</p>
+                            <div class="portfolio-links">
+                                <a href="portfolio-examples/real-estate-portal.html?lang=ar" target="_blank" class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live Demo" data-ar="شاهد العرض التوضيحي">View Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-en="What Our Clients Say" data-ar="آراء عملائنا">آراء عملائنا</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="Mawqi3 Pro exceeded our expectations! They delivered a beautiful, fast website that doubled our online sales." data-ar="فريق موقع برو فاق توقعاتنا! أنشأوا لنا موقعًا رائعًا وسريعًا ضاعف مبيعاتنا أونلاين">
+                            فريق موقع برو فاق توقعاتنا! أنشأوا لنا موقعًا رائعًا وسريعًا ضاعف مبيعاتنا أونلاين
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Sarah Miller</h4>
+                            <span data-en="CEO, Fashion Boutique" data-ar="المدير التنفيذي - متجر أزياء">CEO, Fashion Boutique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="Professional, reliable, and creative. Our new website perfectly represents our brand and attracts more customers." data-ar="فريق محترف وموثوق ومبدع. الموقع الجديد يعكس علامتنا ويجذب عملاء أكثر">
+                            "Professional, reliable, and creative. Our new website perfectly represents our brand and attracts more customers."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Mohammed Ahmed</h4>
+                            <span data-en="Owner, Tech Solutions" data-ar="مالك - حلول تقنية">Owner, Tech Solutions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="Amazing team! They understood our vision and created exactly what we needed. Highly recommended!" data-ar="فريق مميز فهم رؤيتنا ونفذ كل ما نحتاجه بدقة. أنصح بالتعامل معهم!">
+                            "Amazing team! They understood our vision and created exactly what we needed. Highly recommended!"
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Lisa Johnson</h4>
+                            <span data-en="Director, Healthcare Clinic" data-ar="مدير - عيادة رعاية صحية">Director, Healthcare Clinic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-en="How It Works" data-ar="خطوات العمل معنا">خطوات العمل معنا</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 data-en="Contact Us" data-ar="ابدأ بالتواصل">Contact Us</h3>
+                        <p data-en="Reach out via WhatsApp or our contact form to start the conversation." data-ar="تواصل عبر الواتساب أو النموذج لبدء مشروعك">
+                            تواصل عبر الواتساب أو النموذج لبدء مشروعك
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 data-en="We Discuss Your Vision" data-ar="نستمع لرؤيتك">We Discuss Your Vision</h3>
+                        <p data-en="We listen to your needs, goals, and preferences to create the perfect plan." data-ar="نناقش احتياجاتك وأهدافك لنضع خطة مناسبة لك">
+                            We listen to your needs, goals, and preferences to create the perfect plan.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 data-en="You Approve the Design" data-ar="اعتماد التصميم">You Approve the Design</h3>
+                        <p data-en="Review and approve the design mockups before we proceed with development." data-ar="راجع التصميم ووافق عليه قبل بدء التنفيذ">
+                            Review and approve the design mockups before we proceed with development.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 data-en="We Build Your Website" data-ar="نبدأ في بناء موقعك">We Build Your Website</h3>
+                        <p data-en="Our expert developers bring your vision to life with clean, efficient code." data-ar="يعمل فريقنا على تنفيذ موقعك بأعلى جودة واحترافية">
+                            Our expert developers bring your vision to life with clean, efficient code.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 data-en="You Launch & Grow!" data-ar="انطلق وحقق النجاح!">You Launch & Grow!</h3>
+                        <p data-en="Launch your new website and watch your business grow with ongoing support." data-ar="أطلق موقعك وراقب نمو أعمالك مع دعمنا المستمر">
+                            Launch your new website and watch your business grow with ongoing support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 data-en="Ready for a Stunning Website?" data-ar="هل أنت جاهز لموقع إلكتروني يحقق طموحاتك؟">هل أنت جاهز لموقع إلكتروني يحقق طموحاتك؟</h2>
+                    <p data-en="Let's discuss your project and create something amazing together. Get a free consultation today!" data-ar="احصل على استشارة مجانية وابدأ مشروعك الرقمي معنا اليوم">
+                        احصل على استشارة مجانية وابدأ مشروعك الرقمي معنا اليوم
+                    </p>
+                    <div class="contact-methods">
+                        <a href="https://wa.me/966561056054" class="contact-method whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-en="Message on WhatsApp" data-ar="راسلنا عبر واتساب">راسلنا عبر واتساب</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name" data-en="Your Name" data-ar="الاسم الكامل">الاسم الكامل</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="business" name="business" required>
+                            <label for="business" data-en="Business Type" data-ar="مجال العمل">مجال العمل</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="whatsapp" name="whatsapp" required>
+                            <label for="whatsapp" data-en="WhatsApp Number" data-ar="رقم واتساب">رقم واتساب</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4"></textarea>
+                            <label for="message" data-en="Project Details (Optional)" data-ar="تفاصيل المشروع (اختياري)">تفاصيل المشروع (اختياري)</label>
+                        </div>
+                        <button type="submit" class="cta-btn primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-en="Submit Request" data-ar="إرسال الطلب">إرسال الطلب</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 data-en="Mawqi3 Pro" data-ar="موقع برو">موقع برو</h3>
+                    <p data-en="Creating stunning websites that help businesses grow and succeed online." data-ar="نصمم مواقع احترافية تساعدك على النمو والتميز في عالم الإنترنت">
+                        نصمم مواقع احترافية تساعدك على النمو والتميز في عالم الإنترنت
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-en="Services" data-ar="خدماتنا">Services</h4>
+                        <ul>
+                            <li><a href="#" data-en="Website Design" data-ar="تصميم مواقع إلكترونية">Website Design</a></li>
+                            <li><a href="#" data-en="E-Commerce" data-ar="حلول التجارة الإلكترونية">E-Commerce</a></li>
+                            <li><a href="#" data-en="Mobile Apps" data-ar="تطوير تطبيقات الجوال">Mobile Apps</a></li>
+                            <li><a href="#" data-en="SEO Optimization" data-ar="تحسين الظهور في محركات البحث">SEO Optimization</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-en="Contact" data-ar="تواصل معنا">Contact</h4>
+                        <ul>
+                            <li><a href="tel:+966561056054">+966 56 105 6054</a></li>
+                            <li><a href="https://wa.me/966561056054">WhatsApp</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span data-en="Mawqi3 Pro" data-ar="موقع برو">موقع برو</span>. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة">جميع الحقوق محفوظة</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="https://wa.me/966561056054" class="mobile-action whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span data-en="WhatsApp" data-ar="واتساب">واتساب</span>
+        </a>
+        <a href="#contact" class="mobile-action">
+            <i class="fas fa-comments"></i>
+            <span data-en="Contact Form" data-ar="نموذج التواصل">نموذج التواصل</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

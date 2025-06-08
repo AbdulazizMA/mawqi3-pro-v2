@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هيلث كير بلاس - نظام إدارة طبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            min-height: 100vh;
+            color: #1f2937;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #dc2626;
+        }
+
+        .login-btn {
+            background: #dc2626;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Hero Dashboard */
+        .dashboard {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .calendar {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .calendar-nav:hover {
+            background: #b91c1c;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .calendar-day:hover {
+            background: #fef2f2;
+        }
+
+        .calendar-day.today {
+            background: #dc2626;
+            color: white;
+        }
+
+        .calendar-day.has-appointment {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        .appointments {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .appointment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-right: 4px solid #dc2626;
+        }
+
+        .appointment-time {
+            font-weight: 600;
+            color: #dc2626;
+        }
+
+        .appointment-patient {
+            font-weight: 500;
+        }
+
+        .appointment-type {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* Forms Section */
+        .forms-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+        }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .form-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .form-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .form-card p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .form-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .form-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Patient Records */
+        .records-section {
+            background: white;
+            margin: 20px;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #dc2626;
+        }
+
+        .search-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #b91c1c;
+        }
+
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #f8fafc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .records-table th {
+            background: #dc2626;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .records-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: right;
+        }
+
+        .records-table tr:hover {
+            background: #fef2f2;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin: 20px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        /* RTL Specific Styles */
+        .appointment-item {
+            border-right: 4px solid #dc2626;
+            border-left: none;
+        }
+
+        .appointment-item .fa-chevron-right:before {
+            content: "\f053";
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .calendar-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .records-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    هيلث كير بلاس
+                </div>
+                <nav class="nav">
+                    <a href="#dashboard">لوحة التحكم</a>
+                    <a href="#appointments">المواعيد</a>
+                    <a href="#patients">المرضى</a>
+                    <a href="#reports">التقارير</a>
+                    <a href="#settings">الإعدادات</a>
+                </nav>
+                <a href="#login" class="login-btn">تسجيل الدخول</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>لوحة التحكم الطبية</h1>
+                <p>نظام إدارة رعاية صحية شامل للممارسات الطبية الحديثة</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">١٢٤٧</div>
+                    <div class="stat-label">إجمالي المرضى</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-number">٢٣</div>
+                    <div class="stat-label">مواعيد اليوم</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="stat-number">١٢</div>
+                    <div class="stat-label">الأطباء النشطون</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">٩٨.٥%</div>
+                    <div class="stat-label">رضا المرضى</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calendar-section" id="appointments">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                تقويم المواعيد
+            </h2>
+            <div class="calendar-container">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav">&gt;</button>
+                        <h3>ديسمبر ٢٠٢٤</h3>
+                        <button class="calendar-nav">&lt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day">س</div>
+                        <div class="calendar-day">ج</div>
+                        <div class="calendar-day">خ</div>
+                        <div class="calendar-day">أ</div>
+                        <div class="calendar-day">ث</div>
+                        <div class="calendar-day">ن</div>
+                        <div class="calendar-day">ح</div>
+                        <div class="calendar-day">١</div>
+                        <div class="calendar-day">٢</div>
+                        <div class="calendar-day has-appointment">٣</div>
+                        <div class="calendar-day">٤</div>
+                        <div class="calendar-day has-appointment">٥</div>
+                        <div class="calendar-day">٦</div>
+                        <div class="calendar-day">٧</div>
+                        <div class="calendar-day">٨</div>
+                        <div class="calendar-day">٩</div>
+                        <div class="calendar-day has-appointment">١٠</div>
+                        <div class="calendar-day">١١</div>
+                        <div class="calendar-day">١٢</div>
+                        <div class="calendar-day">١٣</div>
+                        <div class="calendar-day">١٤</div>
+                        <div class="calendar-day today">١٥</div>
+                        <div class="calendar-day">١٦</div>
+                        <div class="calendar-day has-appointment">١٧</div>
+                        <div class="calendar-day">١٨</div>
+                        <div class="calendar-day">١٩</div>
+                        <div class="calendar-day">٢٠</div>
+                        <div class="calendar-day">٢١</div>
+                        <div class="calendar-day">٢٢</div>
+                        <div class="calendar-day has-appointment">٢٣</div>
+                        <div class="calendar-day">٢٤</div>
+                        <div class="calendar-day">٢٥</div>
+                        <div class="calendar-day">٢٦</div>
+                        <div class="calendar-day">٢٧</div>
+                        <div class="calendar-day">٢٨</div>
+                        <div class="calendar-day">٢٩</div>
+                        <div class="calendar-day">٣٠</div>
+                        <div class="calendar-day">٣١</div>
+                    </div>
+                </div>
+                <div class="appointments">
+                    <h3>مواعيد اليوم</h3>
+                    <div class="appointment-item">
+                        <div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div>
+                            <div class="appointment-time">٩:٠٠ ص</div>
+                            <div class="appointment-patient">سارة أحمد</div>
+                            <div class="appointment-type">فحص عام</div>
+                        </div>
+                    </div>
+                    <div class="appointment-item">
+                        <div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div>
+                            <div class="appointment-time">١٠:٣٠ ص</div>
+                            <div class="appointment-patient">محمد علي</div>
+                            <div class="appointment-type">تحليل دم</div>
+                        </div>
+                    </div>
+                    <div class="appointment-item">
+                        <div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div>
+                            <div class="appointment-time">٢:٠٠ م</div>
+                            <div class="appointment-patient">فاطمة خالد</div>
+                            <div class="appointment-type">استشارة</div>
+                        </div>
+                    </div>
+                    <div class="appointment-item">
+                        <div>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div>
+                            <div class="appointment-time">٣:٣٠ م</div>
+                            <div class="appointment-patient">أحمد محمود</div>
+                            <div class="appointment-type">متابعة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="forms-section">
+        <div class="container">
+            <h2 class="section-title">نماذج المرضى والمستندات</h2>
+            <div class="forms-grid">
+                <div class="form-card">
+                    <div class="form-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>نموذج التاريخ الطبي</h3>
+                    <p>نموذج شامل للتاريخ الطبي وتقييم الحالة الصحية الحالية للمرضى الجدد.</p>
+                    <a href="#medical-form" class="form-btn">فتح النموذج</a>
+                </div>
+                <div class="form-card">
+                    <div class="form-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>نماذج الموافقة</h3>
+                    <p>نماذج موافقة العلاج واتفاقية الخصوصية للإجراءات الطبية ومعالجة البيانات.</p>
+                    <a href="#consent-form" class="form-btn">فتح النموذج</a>
+                </div>
+                <div class="form-card">
+                    <div class="form-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>مطالبات التأمين</h3>
+                    <p>نماذج تقديم ومراجعة مطالبات التأمين للفوترة والسداد.</p>
+                    <a href="#insurance-form" class="form-btn">فتح النموذج</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="records-section" id="patients">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-folder-open"></i>
+                سجلات المرضى
+            </h2>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="البحث عن المرضى بالاسم أو الرقم أو الحالة...">
+                <button class="search-btn">بحث</button>
+            </div>
+            <table class="records-table">
+                <thead>
+                    <tr>
+                        <th>إجراء</th>
+                        <th>الحالة</th>
+                        <th>المرض</th>
+                        <th>آخر زيارة</th>
+                        <th>العمر</th>
+                        <th>الاسم</th>
+                        <th>رقم المريض</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-eye"></i></td>
+                        <td><span class="status-active">نشط</span></td>
+                        <td>ضغط دم مرتفع</td>
+                        <td>١٥ ديسمبر ٢٠٢٤</td>
+                        <td>٣٤</td>
+                        <td>سارة أحمد</td>
+                        <td>P001247</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-eye"></i></td>
+                        <td><span class="status-pending">معلق</span></td>
+                        <td>فحص سنوي</td>
+                        <td>١٤ ديسمبر ٢٠٢٤</td>
+                        <td>٢٨</td>
+                        <td>محمد علي</td>
+                        <td>P001246</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-eye"></i></td>
+                        <td><span class="status-active">نشط</span></td>
+                        <td>السكري</td>
+                        <td>١٣ ديسمبر ٢٠٢٤</td>
+                        <td>٤٢</td>
+                        <td>فاطمة خالد</td>
+                        <td>P001245</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-eye"></i></td>
+                        <td><span class="status-active">نشط</span></td>
+                        <td>رعاية قلبية</td>
+                        <td>١٢ ديسمبر ٢٠٢٤</td>
+                        <td>٥٦</td>
+                        <td>أحمد محمود</td>
+                        <td>P001244</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; ٢٠٢٤ هيلث كير بلاس. جميع الحقوق محفوظة. | متوافق مع قوانين الخصوصية | تم التطوير بـ ❤️ بواسطة ويب كرافت ستوديو</p>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar functionality
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', function() {
+                const arabicNumbers = ['١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩', '١٠', '١١', '١٢', '١٣', '١٤', '١٥', '١٦', '١٧', '١٨', '١٩', '٢٠', '٢١', '٢٢', '٢٣', '٢٤', '٢٥', '٢٦', '٢٧', '٢٨', '٢٩', '٣٠', '٣١'];
+                if (arabicNumbers.includes(this.textContent)) {
+                    document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('today'));
+                    this.classList.add('today');
+                }
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-input').value;
+            if (searchTerm) {
+                alert(`البحث عن: ${searchTerm}`);
+            }
+        });
+
+        // Appointment clicks
+        document.querySelectorAll('.appointment-item').forEach(item => {
+            item.addEventListener('click', function() {
+                alert('فتح تفاصيل الموعد...');
+            });
+        });
+
+        // Form buttons
+        document.querySelectorAll('.form-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('فتح النموذج في نافذة جديدة...');
+            });
+        });
+    </script>
+</body>
+</html>
